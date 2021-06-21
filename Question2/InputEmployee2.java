@@ -36,16 +36,14 @@ public class InputEmployee2 {
     String firstName = sc.nextLine().strip();
 
     boolean isFirstName = true;
-    if(!firstName.equals("") && !firstName.equals(null)) {
+    if(!firstName.equals("") && !firstName.isEmpty()) {
       isFirstName = false;
     }
 
     while(isFirstName) {
       System.out.print("入力必須です。姓を入力してください(例:赤井) > ");
       firstName = sc.nextLine().strip();
-      if(!firstName.equals("") || !firstName.isEmpty()) {
-        isFirstName = false;
-      }
+      isFirstName = isStringBlankEmpty(firstName);
     }
 
     System.out.print("名を入力してください(例:翠聖) > ");
@@ -60,9 +58,8 @@ public class InputEmployee2 {
     while(isLastName) {
       System.out.print("入力必須です。名を入力してください(例:赤井) > ");
       lastName = sc.nextLine().strip();
-      if(!lastName.equals("") || !lastName.isEmpty()) {
-        isLastName = false;
-      }
+      isLastName = isStringBlankEmpty(lastName);
+
     }
 
     System.out.print("性別を入力してください(男:1 女:2) > ");
@@ -74,18 +71,40 @@ public class InputEmployee2 {
     }
 
     while(isGender) {
-      System.out.print("1又は2で性別を入力してください(男:1 女:2)　> ");
+      System.out.print("1または2で性別を入力してください(男:1 女:2)　> ");
       gender = sc.nextLine().strip();
-      if(gender.equals("") || gender.isEmpty()) {
-        continue;
-      }
+
+      if(isStringBlankEmpty(gender)) continue;
+
       if(gender.equals("1") || gender.equals("2")) {
         isGender = false;
       }
     }
 
     System.out.print("生年月日を入力してください(例:1980/01/01) > ");
-    String birthday = sc.nextLine();
+    String birthday = sc.nextLine().strip();
+
+    boolean isBirthday = true;
+    if(birthday.matches("^[0-9]+$") && birthday.length() == 8) {
+      isBirthday = false;
+      String year = birthday.substring(0, 4);
+      String month = birthday.substring(4, 6);
+      String day = birthday.substring(6, 8);
+      birthday = year + "/" + month + "/" + day;
+    }
+
+    while(isBirthday) {
+      System.out.print("8桁の半角数字で生年月日を入力してください(例:1980/01/01) > ");
+      birthday = sc.nextLine().strip();
+      if(birthday.matches("^[0-9]+$") && birthday.length() == 8) {
+        isBirthday = false;
+        String year = birthday.substring(0, 4);
+        String month = birthday.substring(4, 6);
+        String day = birthday.substring(6, 8);
+        birthday = year + "/" + month + "/" + day;
+      }
+
+    }
 
     System.out.print("郵便番号を入力してください(例:160-0022) > ");
     String zipCode = sc.nextLine();
@@ -116,7 +135,14 @@ public class InputEmployee2 {
     System.out.println("| メール　:" + mail);
     System.out.println("ー –––––––––––––––––––––––––– ー");
 
+  }
 
+  private static boolean isStringBlankEmpty(String str) {
+    boolean flg = true;
+    if(!str.equals("") || !str.isEmpty()) {
+      flg = false;
+    }
+    return flg;
   }
 }
 
