@@ -140,6 +140,30 @@ public class InputEmployee2 {
 
     System.out.print("メールアドレスを入力してください(例:akai@uc.com) > ");
     String mail = sc.nextLine();
+
+    boolean isMail = true;
+    if(mail.length() >= 3 && mail.contains("@")) {
+      String beforeMail = mail.substring(0, mail.indexOf("@"));
+      String afterMail = mail.substring((mail.indexOf("@")+1), mail.length());
+
+      if(beforeMail.matches("^[a-z0-9]+$") && afterMail.matches("^[a-z0-9]+$")) {
+        isMail = false;
+      }
+    }
+
+    while(isMail) {
+      System.out.print("半角英数字でメールアドレスを入力してください(例:akai@uc.com) > ");
+      mail = sc.nextLine().strip();
+      if(mail.length() >= 3 && mail.contains("@")) {
+        String beforeMail = mail.substring(0, mail.indexOf("@"));
+        String afterMail = mail.substring((mail.indexOf("@")+1), mail.length());
+
+        if(beforeMail.matches("^[a-z0-9]+$") && afterMail.matches("^[a-z0-9]+$")) {
+          isMail = false;
+        }
+      }
+    }
+
     sc.close();
 
     System.out.println("");
