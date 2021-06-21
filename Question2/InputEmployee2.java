@@ -109,6 +109,26 @@ public class InputEmployee2 {
     System.out.print("郵便番号を入力してください(例:160-0022) > ");
     String zipCode = sc.nextLine();
 
+    boolean isZipCode = true;
+    if(zipCode.matches("^[0-9]+$") && zipCode.length() == 8) {
+      isZipCode = false;
+      String beforeZipCode = zipCode.substring(0, 3);
+      String afterZipCode = zipCode.substring(3, 8);
+      zipCode = beforeZipCode + "-" + afterZipCode;
+    }
+
+    while(isZipCode) {
+      System.out.print("8桁の半角数字で郵便番号を入力してください(例:160-0022) > ");
+      zipCode = sc.nextLine().strip();
+      if(zipCode.matches("^[0-9]+$") && zipCode.length() == 8) {
+        isZipCode = false;
+        String beforeZipCode = zipCode.substring(0, 3);
+        String afterZipCode = zipCode.substring(3, 8);
+        zipCode = beforeZipCode + "-" + afterZipCode;
+      }
+
+    }
+
     System.out.print("都道府県を入力してください(例:東京都) > ");
     String prefecture = sc.nextLine();
 
