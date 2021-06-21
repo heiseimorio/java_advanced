@@ -66,7 +66,23 @@ public class InputEmployee2 {
     }
 
     System.out.print("性別を入力してください(男:1 女:2) > ");
-    String gender = sc.nextLine();
+    String gender = sc.nextLine().strip();
+
+    boolean isGender = true;
+    if(gender.equals("1") || gender.equals("2")) {
+      isGender = false;
+    }
+
+    while(isGender) {
+      System.out.print("1又は2で性別を入力してください(男:1 女:2)　> ");
+      gender = sc.nextLine().strip();
+      if(gender.equals("") || gender.isEmpty()) {
+        continue;
+      }
+      if(gender.equals("1") || gender.equals("2")) {
+        isGender = false;
+      }
+    }
 
     System.out.print("生年月日を入力してください(例:1980/01/01) > ");
     String birthday = sc.nextLine();
