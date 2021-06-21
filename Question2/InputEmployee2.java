@@ -33,10 +33,37 @@ public class InputEmployee2 {
 
 
     System.out.print("姓を入力してください(例:赤井) > ");
-    String firstName = sc.nextLine();
+    String firstName = sc.nextLine().strip();
+
+    boolean isFirstName = true;
+    if(!firstName.equals("") && !firstName.equals(null)) {
+      isFirstName = false;
+    }
+
+    while(isFirstName) {
+      System.out.print("入力必須です。姓を入力してください(例:赤井) > ");
+      firstName = sc.nextLine().strip();
+      if(!firstName.equals("") || !firstName.isEmpty()) {
+        isFirstName = false;
+      }
+    }
 
     System.out.print("名を入力してください(例:翠聖) > ");
-    String lastName = sc.nextLine();
+    String lastName = sc.nextLine().strip();
+
+
+    boolean isLastName = true;
+    if(!lastName.equals("") && !lastName.isEmpty()) {
+      isLastName = false;
+    }
+
+    while(isLastName) {
+      System.out.print("入力必須です。名を入力してください(例:赤井) > ");
+      lastName = sc.nextLine().strip();
+      if(!lastName.equals("") || !lastName.isEmpty()) {
+        isLastName = false;
+      }
+    }
 
     System.out.print("性別を入力してください(男:1 女:2) > ");
     String gender = sc.nextLine();
