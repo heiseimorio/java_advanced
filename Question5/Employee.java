@@ -19,6 +19,8 @@ public class Employee {
     this.mail = mail;
   }
 
+  public Employee() {}
+
   public String getEmpNumber() {
     return this.empNumber;
   }
