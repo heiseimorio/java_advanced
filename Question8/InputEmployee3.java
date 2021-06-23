@@ -3,11 +3,9 @@ package Question8;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import Question2.InputEmployee2;
 import Question3.Person;
 import Question4.Address;
 import Question5.Employee;
-import Question7.Manager;
 
 public class InputEmployee3 {
   Employee emp = new Employee();
