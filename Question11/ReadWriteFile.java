@@ -29,9 +29,10 @@ public class ReadWriteFile {
         while ((line = br.readLine()) != null) {
           data.add(line);
         }
+        br.close();
 
         String inputContet = sc.nextLine();
-        String blank = " 	";
+        String blank = "	";
         String workContent = blank + inputContet;
 
         String inputTime = sc.nextLine();
@@ -55,15 +56,19 @@ public class ReadWriteFile {
 
         // PrintWriterクラスのprintlnメソッドを使ってファイルに書き込む
         for(String text: data) {
-          printWriter.println(text);
+          if(text.equals("以上、報告終わり。")) {
+            printWriter.print(text);
+          } else {
+            printWriter.println(text);
+          }
         }
 
         // 書き込み対象のファイルを閉じてリソースを開放する
         printWriter.close();
-      }
-      catch (IOException e) {
-        System.out.println("An error occurred.");
-        e.printStackTrace();
+      } catch(FileNotFoundException e){
+        System.out.println(e);
+      } catch(IOException e) {
+        System.out.println(e);
       }
 
   }
