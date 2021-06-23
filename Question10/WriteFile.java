@@ -37,6 +37,7 @@ public class WriteFile {
       // 書き込み対象のファイルを閉じてリソースを開放する
       printWriter.close();
 
+
     } catch(FileNotFoundException e){
       System.out.println(e);
     }catch(IOException e){
