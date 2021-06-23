@@ -6,7 +6,7 @@ public class Address {
   private String municipaities; // 市区町村
   private String addressBuilding; // 番地
 
-  Address(String zipCode, String prefecture, String municipaities, String addressBuilding) {
+  public Address(String zipCode, String prefecture, String municipaities, String addressBuilding) {
     this.zipCode = zipCode;
     this.prefecture = prefecture;
     this.municipaities = municipaities;

@@ -10,7 +10,7 @@ public class Person {
   // 使用例
   // LocalDate localDt = LocalDate.parse(“1980/01/01”, DateTimeFormatter.ofPattern("yyyy/MM/dd"));
 
-  Person(String firstName, String lastName, int gender, LocalDate birthday) {
+  public Person(String firstName, String lastName, int gender, LocalDate birthday) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.gender = gender;
