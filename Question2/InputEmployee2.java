@@ -2,6 +2,8 @@ package Question2;
 
 import java.util.*;
 
+import Question8.InputEmployee3;
+
 public class InputEmployee2 {
 
   public static void main(String[] args) {
@@ -166,19 +168,12 @@ public class InputEmployee2 {
 
     sc.close();
 
-    System.out.println("");
-    System.out.println("************社員情報************");
-    System.out.println("ー ––––––––––––––––––––––––– ー");
-    System.out.println("| 社員番号:" + empNumber);
-    System.out.println("| 氏名　　:" + firstName + " " + lastName);
-    System.out.println("| 性別　　:" + gender);
-    System.out.println("| 生年月日:" + birthday);
-    System.out.println("| 郵便番号:〒" + zipCode);
-    System.out.println("| 住所１　:" + prefecture + municipaities);
-    System.out.println("| 住所２　:" + addressBuilding);
-    System.out.println("| メール　:" + mail);
-    System.out.println("ー –––––––––––––––––––––––––– ー");
+    // Scannerで入力されたデータをEmployeeクラスに格納する
+    InputEmployee3 input3 = new InputEmployee3();
+    input3.setEmployeeData(empNumber, firstName, lastName, gender, birthday, zipCode, prefecture, municipaities, addressBuilding, mail);
 
+    // Employeeクラスのデータを表示する
+    input3.printEmployeeData();
   }
 
   private static boolean isStringBlankEmpty(String str) {
