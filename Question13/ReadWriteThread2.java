@@ -64,15 +64,15 @@ public class ReadWriteThread2 implements Runnable {
     return data;
   }
 
-  public void write(List<String> readData) {
+  public void write() {
     try {
-      //
-      Path p = Paths.get(this.createDirPath+ "/report_" + this.empNumber + ".txt");
+      // Path p = Paths.get(this.createDirPath+ "/report_" + this.empNumber + ".txt");
+      Path p = Paths.get(this.createDirPath+ "/report_" + this.empNumber + ".rpt");
       createFileName = p.toString();
       try{
         Files.createFile(p);
       }catch(IOException e){
-        System.out.println(e);
+        System.out.println("ファイルは既に存在します。");
       }
 
       // FileWriterクラスのオブジェクトを生成する
@@ -82,7 +82,7 @@ public class ReadWriteThread2 implements Runnable {
       PrintWriter printWriter = new PrintWriter(new BufferedWriter(fileWriter));
 
       // PrintWriterクラスのprintlnメソッドを使ってファイルに書き込む
-      for(String text: readData) {
+      for(String text: this.readData) {
         if(text.equals("以上、報告終わり。")) {
           printWriter.print(text);
         } else {

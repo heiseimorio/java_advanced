@@ -12,10 +12,26 @@ public class WorkReport2 {
     readThread.empNumber = sc.nextLine();
     readThread.inputContet = sc.nextLine();
     readThread.inputTime = sc.nextLine();
+
+    boolean isTime = true;
+    if(readThread.inputTime.matches("^[0-9]+$") && readThread.inputTime.length() == 4) {
+      isTime = false;
+    }
+
+    while(isTime) {
+      System.out.print("4桁の半角整数で作業時間を入力してください(例:0200) > ");
+      readThread.inputTime = sc.nextLine();
+      if(readThread.inputTime.matches("^[0-9]+$") && readThread.inputTime.length() == 4) {
+        isTime = false;
+        String[] tmp = readThread.inputTime.split("");
+        readThread.inputTime = tmp[0] + tmp[1] + ":" + tmp[2] + tmp[3];
+      }
+    }
+
     sc.close();
 
     read.start();
-    readThread.write(readThread.readData);
+    readThread.write();
 
   }
 }
