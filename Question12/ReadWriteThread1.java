@@ -15,13 +15,11 @@ public class ReadWriteThread1 implements Runnable {
 
   String readFilePath;
   String writeFilePath;
+  String inputContet;
+  String inputTime;
 
   public void run() {
-    Scanner sc = new Scanner(System.in);
-    String inputContet = sc.nextLine();
-    String inputTime = sc.nextLine();
-    sc.close();
-    List<String> readData = read(this.readFilePath, inputContet, inputTime);
+    List<String> readData = read(this.readFilePath, this.inputContet, this.inputTime);
     write(this.writeFilePath, readData);
   }
 
