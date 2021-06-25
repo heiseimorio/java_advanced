@@ -41,5 +41,33 @@ public class SearchFile {
       }
     });
 
+    // 報告書フォルダ(Question17用ファイル置場)のパスを取得
+    String filePath = searchDirPath();
+
+    // Fileクラスのメソッドをラムダ式で使って、取得する
+
   }
+
+  // path.textからQuestion17用ファイル置場のpathを取得
+  private static String searchDirPath() {
+    String question17Path = null;
+    try(BufferedReader br = new BufferedReader(new FileReader("path.text"))) {
+      String line;
+      int count = 0;
+      while ((line = br.readLine()) != null) {
+        count++;
+        if(count == 2) {
+          question17Path = line;
+        }
+      }
+      br.close();
+
+    } catch(FileNotFoundException e){
+      System.out.println(e);
+    } catch(IOException e) {
+      System.out.println(e);
+    }
+    return question17Path;
+  }
+
 }
