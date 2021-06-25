@@ -1,6 +1,7 @@
 package Question17;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -45,6 +46,18 @@ public class SearchFile {
     String filePath = searchDirPath();
 
     // Fileクラスのメソッドをラムダ式で使って、取得する
+    File dir = new File(filePath);
+    File[] files = dir.listFiles(file -> file.isFile());
+
+    // 〇〇開発部に所属している人のファイル名を出力
+    for (int i = 0; i < files.length; i++) {
+        String fileName = files[i].getName();
+        for(String empNumber : target) {
+          if(fileName.contains(empNumber)) {
+            System.out.println(fileName);
+          }
+        }
+    }
 
   }
 
